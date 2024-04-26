@@ -18,10 +18,10 @@
   (if (eq (key-binding (kbd "DEL")) 'delete-backward-char)
       (progn
         (define-key hammingway-mode-map (kbd "DEL") 'ignore)
-        (message "Hammingway Mode: off"))
+        (message "Hammingway Mode: on"))
     (progn
       (define-key hammingway-mode-map (kbd "DEL") 'delete-backward-char)
-      (message "Hammingway Mode: on"))))
+      (message "Hammingway Mode: off"))))
 
 (define-key global-map (kbd "C-c h m") 'hammingway-toggle-backspace)
 (global-hammingway-mode 1)
