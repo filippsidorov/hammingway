@@ -15,13 +15,15 @@
 
 (defun hammingway-toggle-backspace ()
   (interactive)
-  (if (eq (key-binding (kbd "DEL")) 'delete-backward-char)
+  (if hammingway-mode
       (progn
-        (define-key hammingway-mode-map (kbd "DEL") 'ignore)
-        (message "Hammingway Mode: on"))
+        (define-key hammingway-mode-map (kbd "DEL") 'delete-backward-char)
+        (message "Hammingway Mode: off")
+        (hammingway-mode -1))
     (progn
-      (define-key hammingway-mode-map (kbd "DEL") 'delete-backward-char)
-      (message "Hammingway Mode: off"))))
+      (define-key hammingway-mode-map (kbd "DEL") 'ignore)
+      (message "Hammingway Mode: on")
+      (hammingway-mode 1))))
 
 (define-key global-map (kbd "C-c h m") 'hammingway-toggle-backspace)
 (global-hammingway-mode 1)
